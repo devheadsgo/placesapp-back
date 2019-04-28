@@ -25,3 +25,13 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    tracking.pre_persist_listener:
+        class: App\EventListener\EntityPrePersistListener
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }
+
+    tracking.pre_update_listener:
+        class: App\EventListener\EntityPreUpdateListener
+        tags:
+            - { name: doctrine.event_listener, event: preUpdate }
